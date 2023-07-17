@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     position: 'relative',
     bottom: 0,
+    margin: 10
   },
   title: {
     fontSize: 20,

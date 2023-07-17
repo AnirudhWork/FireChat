@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SplashPage from './Splash';
-import Signup from './Signup';
+import Welcome from './Welcome';
 import {
+  SafeAreaView,
   StyleSheet,
   View,
   useColorScheme,
@@ -27,27 +28,22 @@ function App(): React.JSX.Element {
   }, []);
 
   return (
-    <View style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
       {showSplash ? (
         <View>
           <SplashPage />
         </View>
       ) : (
-        <View style={[styles.content, { backgroundColor: getBackgroundColor() }]}>
-          <Signup textColor={getTextColor()} />
+        <View style={{ backgroundColor: getBackgroundColor() }}>
+          <Welcome textColor={getTextColor()} />
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
