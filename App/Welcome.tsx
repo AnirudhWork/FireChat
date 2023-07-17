@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Linking,
   Alert,
+  TouchableHighlight
 } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 
@@ -17,12 +18,12 @@ interface WelcomeProps {
 const Welcome = ({textColor}: WelcomeProps) => {
   const handlePrivacyPolicyPress = () => {
     // Open the privacy policy URL in the device's default browser
-    Linking.openURL('https://www.google.com/');
+    Linking.openURL('https://www.whatsapp.com/legal/privacy-policy?lg=en&lc=GB&eea=0');
   };
 
   const handleTermsOfServicePress = () => {
     // Open the terms of service URL in the device's default browser
-    Linking.openURL('https://www.google.com/');
+    Linking.openURL('https://www.whatsapp.com/legal/terms-of-service?lg=en&lc=GB&eea=0');
   };
 
   const handleLongPress = (url: string) => {
@@ -39,24 +40,24 @@ const Welcome = ({textColor}: WelcomeProps) => {
       <Text style={styles.title}>Welcome to WhatsApp</Text>
       <Text style={styles.text}>
         Read our{' '}
-        <TouchableOpacity
-          activeOpacity={1}
+        <TouchableHighlight
+          activeOpacity={0.5}
+          underlayColor="lightblue"
           onPress={handlePrivacyPolicyPress}
-          onLongPress={() => handleLongPress('https://www.google.com/')}
-          style={styles.linkContainer}>
+          onLongPress={() => handleLongPress('https://www.google.com/')}>
           <Text style={styles.link}>Privacy Policy</Text>
-        </TouchableOpacity>{' '}
+        </TouchableHighlight>{' '}
         Tap "Agree and continue" to accept the{' '}
         <TouchableOpacity
           activeOpacity={1}
           onPress={handleTermsOfServicePress}
           onLongPress={() => handleLongPress('https://www.google.com/')}
-          style={styles.linkContainer}>
+          >
           <Text style={styles.link}>Terms of Service</Text>
         </TouchableOpacity>
       </Text>
       <TouchableOpacity activeOpacity={0.9}>
-        <Text style={styles.button}>Agree and Continue!</Text>
+        <Text style={styles.button}>Agree and Continue</Text>
       </TouchableOpacity>
     </View>
   );
@@ -87,12 +88,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  linkContainer: {
-    alignSelf: 'flex-start',
-  },
   link: {
-    textDecorationLine: 'underline',
-    color: 'blue',
+    color: 'lightblue'
   },
   button: {
     paddingVertical: 10,
@@ -101,6 +98,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderRadius: 50,
     color: 'black',
+    fontWeight: 'bold',
   },
 });
 
