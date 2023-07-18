@@ -35,7 +35,7 @@ function App(): React.JSX.Element {
         </View>
       ) : (
         <View style={{ backgroundColor: getBackgroundColor() }}>
-          <Welcome textColor={getTextColor()} />
+          <Welcome textColor={getTextColor()} backgroundColor={getBackgroundColor()} />
         </View>
       )}
     </SafeAreaView>
