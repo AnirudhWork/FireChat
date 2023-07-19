@@ -40,37 +40,46 @@ const Welcome = ({textColor, backgroundColor}: WelcomeProps) => {
   const WelcomeImage = require('../images/barcode.jpg');
 
   return (
-    <View style={[styles.container, {backgroundColor: backgroundColor}]}>
+    <View style={[styles.container]}>
       <Image style={styles.image} source={WelcomeImage} />
       <Text style={[styles.title, {color: textColor}]}>
         Welcome to WhatsApp
       </Text>
-      <Text style={[styles.text, {color: textColor}]}>
-        Read our{' '}
-        <TouchableHighlight
-          activeOpacity={0.5}
-          underlayColor="lightblue"
-          onPress={handlePrivacyPolicyPress}
-          onLongPress={() =>
-            handleLongPress(
-              'https://www.whatsapp.com/legal/privacy-policy?lg=en&lc=GB&eea=0',
-            )
-          }>
-          <Text style={styles.link}>Privacy Policy</Text>
-        </TouchableHighlight>{' '}
-        Tap "Agree and continue" to accept the{' '}
-        <TouchableHighlight
-          activeOpacity={0.5}
-          underlayColor="lightblue"
-          onPress={handleTermsOfServicePress}
-          onLongPress={() =>
-            handleLongPress(
-              'https://www.whatsapp.com/legal/terms-of-service?lg=en&lc=GB&eea=0',
-            )
-          }>
-          <Text style={styles.link}>Terms of Service</Text>
-        </TouchableHighlight>
-      </Text>
+      <View style={styles.policies_container}>
+        <View style={styles.policies}>
+          <Text style={[styles.text, {color: textColor}]}>Read our </Text>
+
+          <TouchableHighlight
+            activeOpacity={0.5}
+            underlayColor="lightblue"
+            onPress={handlePrivacyPolicyPress}
+            onLongPress={() =>
+              handleLongPress(
+                'https://www.whatsapp.com/legal/privacy-policy?lg=en&lc=GB&eea=0',
+              )
+            }>
+            <Text style={[styles.link]}>Privacy Policy</Text>
+          </TouchableHighlight>
+
+          <Text style={[styles.text, {color: textColor}]}> Tap "Agree and</Text>
+        </View>
+
+        <View style={styles.policies}>
+          <Text>continue" to accept the</Text>
+          <TouchableHighlight
+            activeOpacity={0.5}
+            underlayColor="red"
+            onPress={handleTermsOfServicePress}
+            onLongPress={() =>
+              handleLongPress(
+                'https://www.whatsapp.com/legal/terms-of-service?lg=en&lc=GB&eea=0',
+              )
+            }>
+            <Text style={styles.link}>Terms of Service</Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+
       <TouchableOpacity activeOpacity={0.9}>
         <Text style={styles.button}>Agree and Continue</Text>
       </TouchableOpacity>
@@ -94,13 +103,22 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
   },
-  text: {
+  text:{
     maxWidth: 300,
-    margin: 25,
     alignItems: 'center',
   },
   link: {
     color: '#65D0D4',
+  },
+  policies_container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    margin: 15,
+  },
+  policies: {
+    flexDirection: 'row',
+    margin: 1.5,
   },
   button: {
     paddingVertical: 10,
@@ -110,6 +128,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     color: 'black',
     fontWeight: 'bold',
+    marginTop: 10,
   },
 });
 

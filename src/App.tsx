@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import SplashPage from './Splash';
-import Welcome from './Welcome';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  useColorScheme,
-} from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import React, {useState, useEffect} from 'react';
+import SplashPage from './Components/Splash';
+import Welcome from './Components/Welcome';
 
-function App(): React.JSX.Element {
+import {SafeAreaView, StyleSheet, View, useColorScheme} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+const App = () : React.JSX.Element =>  {
   const [showSplash, setShowSplash] = useState(true);
   const colorScheme = useColorScheme();
 
@@ -28,14 +24,18 @@ function App(): React.JSX.Element {
   }, []);
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: getBackgroundColor() }]}>
+    <SafeAreaView
+      style={[styles.container, {backgroundColor: getBackgroundColor()}]}>
       {showSplash ? (
         <View>
           <SplashPage />
         </View>
       ) : (
-        <View style={{ backgroundColor: getBackgroundColor() }}>
-          <Welcome textColor={getTextColor()} backgroundColor={getBackgroundColor()} />
+        <View style={{backgroundColor: getBackgroundColor()}}>
+          <Welcome
+            textColor={getTextColor()}
+            backgroundColor={getBackgroundColor()}
+          />
         </View>
       )}
     </SafeAreaView>
