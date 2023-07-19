@@ -68,7 +68,7 @@ const Welcome = ({textColor, backgroundColor}: WelcomeProps) => {
           <Text>continue" to accept the</Text>
           <TouchableHighlight
             activeOpacity={0.5}
-            underlayColor="red"
+            underlayColor="lightblue"
             onPress={handleTermsOfServicePress}
             onLongPress={() =>
               handleLongPress(
